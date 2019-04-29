@@ -1,0 +1,21 @@
+CC=g++
+LIBS=-lmenu -lncurses
+CLEAN=rm -f
+PROGRAM_NAME=prog
+
+$(PROGRAM_NAME): main.o db.o menu.o
+	$(CC) -o $(PROGRAM_NAME) $^ $(LIBS)
+
+main.o: main.cpp
+	$(CC) -c -o $@ $^ $(LIBS)
+
+menu.o: menu.cpp
+	$(CC) -c -o $@ $^ $(LIBS)
+
+db.o: db.cpp
+	$(CC) -c -o $@ $^ 
+
+
+clean:
+	$(CLEAN) *.o $(PROGRAM_NAME)
+
